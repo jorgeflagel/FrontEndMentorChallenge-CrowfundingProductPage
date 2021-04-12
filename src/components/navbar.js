@@ -95,6 +95,7 @@ function NavBar(){
     // Taken from https://medium.com/@pitipatdop/little-neat-trick-to-capture-click-outside-with-react-hook-ba77c37c7e82
     const node = useRef();
     const navIcon = useRef();
+
     const handleClick = e => {
       if (node.current.contains(e.target) || navIcon.current.contains(e.target) ) {
         // inside click
@@ -102,12 +103,13 @@ function NavBar(){
       }  // outside click 
       setModalOpen(false);
     };
+
     useEffect(() => {
       document.addEventListener("click", handleClick);
       return () => {
         document.removeEventListener("click", handleClick);
       };
-    }, []);
+    });
     // ----------------------------------------------------------------------------------------------------------------
 
     return(

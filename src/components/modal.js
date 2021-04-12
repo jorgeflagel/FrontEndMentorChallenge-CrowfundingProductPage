@@ -97,6 +97,7 @@ const Modal = (props) => {
     const [success, setSuccess] = useState(false);
     
     const node = useRef();
+    
     const handleClick = e => {
       if (node.current.contains(e.target)) {
         // inside click
@@ -104,12 +105,13 @@ const Modal = (props) => {
       }  // outside click 
         props.showModal(false);
     };
+
     useEffect(() => {
       document.addEventListener("mousedown", handleClick);
       return () => {
         document.removeEventListener("mousedown", handleClick);
       };
-    }, []);
+    });
 
     return(
       <ModalOpacity className={props.isOpen ? "" : "hidden"} id="modal">

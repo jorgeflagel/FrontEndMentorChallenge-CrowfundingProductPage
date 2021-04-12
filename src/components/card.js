@@ -143,9 +143,17 @@ const RadioButton = styled.div`
     & > input {
         opacity: 0%
     }
+    & > input:hover {
+        cursor: pointer;
+    }
     & > input:focus {
         opacity: 100%;
     }
+    & > input:checked, & > input:active  {
+        opacity: 0%;
+    }
+
+
     ${CardTitle}:hover && {
         border-color: rgba(60,179,171,1);
     }
