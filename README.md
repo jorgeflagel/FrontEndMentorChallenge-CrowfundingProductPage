@@ -30,8 +30,8 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot1.png)
-![](./screenshot2.png)
+![Previous of the Main-page](./screenshot1.png)
+![Previous of the Form-modal](./screenshot2.png)
 
 ### Links
 
