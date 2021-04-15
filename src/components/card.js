@@ -262,7 +262,9 @@ const Bold = styled.span`
     line-height: 22px;
 `;
 
-const Input = styled.input`
+const Input = styled.input.attrs(props => ({
+    ariaLabel: props.ariaLabel
+  }))`
     width: min(100px, 100%);
     height: 48px;
     border-radius: 33.5px;
@@ -323,7 +325,7 @@ function Card({id, title, subtitle, text, rewards, setRewards, modal, showModal,
                                         <Text>Enter your pledge</Text>
                                         <div>
                                             <DolarSign>$</DolarSign>
-                                            <Input type="number" min={min} value={pledge} onChange={(e) => setPledge(Number(e.target.value))} ariaLabel="Pledge amount"/>
+                                            <Input type="number" min={min} value={pledge | min} onChange={(e) => setPledge(Number(e.target.value))} ariaLabel="Pledge amount"/>
                                             <Button disabled={pledge < min | pledge === 0} onClick={
                                                 pledge >= min 
                                                 ? () => {
