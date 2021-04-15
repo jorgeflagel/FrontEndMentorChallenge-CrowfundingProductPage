@@ -110,13 +110,13 @@ function Header({showModal, selectEdition}) {
     const [isBookmarked, setIsBookmarked] = useState(false);
     return(
         <HeaderStyled>
-            <Logo src={LOGOM} />
+            <Logo src={LOGOM} alt="Logo Mastercraft"/>
             <Title>Mastercraft Bamboo Monitor Riser</Title>
             <Subtitle>A beautifully & handcrafted monitor 
             stand to reduce neck and eye strain.</Subtitle>
             <Buttons>
               <Button size={"l"} onClick={() => {selectEdition("Pledge with no reward"); showModal(true)}} data-target="#modal">Back this project</Button>
-              <Bookmark onClick={() => setIsBookmarked(isBookmarked => !isBookmarked) } selected={isBookmarked}>
+              <Bookmark onClick={() => setIsBookmarked(isBookmarked => !isBookmarked) } selected={isBookmarked} ariaLabel="Bookmark Product">
                 {!isBookmarked ? <img src={BOOKMARK} alt=""/> :
                   <svg width="56" height="56" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><circle fill="rgb(20,122, 114)" cx="28" cy="28" r="28"/><path fill="#FFF" d="M23 19v18l5-5.058L33 37V19z"/></g></svg>
                 }

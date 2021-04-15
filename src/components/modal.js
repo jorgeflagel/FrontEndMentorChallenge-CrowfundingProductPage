@@ -129,7 +129,7 @@ const Modal = (props) => {
             </Success>
           : <>
               <ModalHeader>
-                <CloseModal src={CLOSEMODAL} onClick={() => props.showModal(false)}/>
+                <CloseModal src={CLOSEMODAL} onClick={() => props.showModal(false)} alt="Close Modal"/>
                 <Title>Back this project</Title>
                 <Subtitle>Want to support us in bringing Mastercraft 
                   Bamboo Monitor Riser out in the world?</Subtitle>

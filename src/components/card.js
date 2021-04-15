@@ -41,7 +41,7 @@ const CardContainer = styled.div`
         }
     }}
     ${(props) => {
-        if(props.disabled) {
+        if(props.notShow) {
             return(
                 css`
                     opacity: 50%;
@@ -82,7 +82,7 @@ const CardTitle = styled.h3`
     font-size: 14px;
     line-height: 17px;
     ${(props) => {
-        if(props.modal && !props.disabled) {
+        if(props.modal && !props.notShow) {
             return(
                 css`
                     &:hover{
@@ -134,7 +134,7 @@ const TextDesktop = styled(Text)`
      }
 `;
 
-const RadioButton = styled.div`
+const RadioButton = styled.span`
     position: absolute;
     border-radius: 100%;
     left: 28px;
@@ -299,19 +299,19 @@ function Card({id, title, subtitle, text, rewards, setRewards, modal, showModal,
         var disabled = rewards[id] === 0;
         
         return(
-            <CardContainer modal={modal} disabled={disabled} selected={selectedEdition === title} id={modal ? `card${id}` : null}>
+            <CardContainer modal={modal} notShow={disabled} selected={selectedEdition === title} id={modal ? `card${id}` : null}>
                 <CardHeader modal={modal}>
-                    <CardTitle modal={modal} disabled={disabled} onClick={modal && !disabled ? ()=>selectEdition(title) : null} >
+                    <CardTitle modal={modal} notShow={disabled} onClick={modal && !disabled ? ()=>selectEdition(title) : null} >
                         {modal 
                             ?   <RadioButton disabled={disabled} selected={title === selectedEdition} >
-                                    <input type="radio" value={title} checked={selectedEdition === title} disabled={disabled}
+                                    <input type="radio" value={title} checked={selectedEdition === title} disabled={disabled} ariaLabel="Select Pledge"
                                         onChange={modal && !disabled ? (e)=>selectEdition(e.target.value) : null}/>
                                 </RadioButton>
                             : null
                         }
                         {title}
                     </CardTitle>
-                    <CardSubtitle>{subtitle}</CardSubtitle>
+                    {subtitle ? <CardSubtitle>{subtitle}</CardSubtitle> : null}
                     {id !== 0 && modal ? <TextDesktop modal={modal}><Bold>{rewards[id]}</Bold> left</TextDesktop> : null}
                 </CardHeader>
                 <Text modal={modal}>{text}</Text>
@@ -323,7 +323,7 @@ function Card({id, title, subtitle, text, rewards, setRewards, modal, showModal,
                                         <Text>Enter your pledge</Text>
                                         <div>
                                             <DolarSign>$</DolarSign>
-                                            <Input type="number" min={min} value={pledge} onChange={(e) => setPledge(Number(e.target.value))}/>
+                                            <Input type="number" min={min} value={pledge} onChange={(e) => setPledge(Number(e.target.value))} ariaLabel="Pledge amount"/>
                                             <Button disabled={pledge < min | pledge === 0} onClick={
                                                 pledge >= min 
                                                 ? () => {
