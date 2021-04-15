@@ -66,9 +66,7 @@ const Buttons = styled.div`
   }
 `;
 
-const Bookmark = styled.button.attrs(props => ({
-  aria-label: props.aria-label
-}))`
+const Bookmark = styled.button`
     border: none;
     width: 56px;
     background-color: rgba(47,47,47,0.05);

@@ -262,9 +262,7 @@ const Bold = styled.span`
     line-height: 22px;
 `;
 
-const Input = styled.input.attrs(props => ({
-    aria-label: props.aria-label
-  }))`
+const Input = styled.input`
     width: min(100px, 100%);
     height: 48px;
     border-radius: 33.5px;
