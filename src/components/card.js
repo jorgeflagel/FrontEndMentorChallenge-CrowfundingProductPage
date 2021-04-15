@@ -263,7 +263,7 @@ const Bold = styled.span`
 `;
 
 const Input = styled.input.attrs(props => ({
-    ariaLabel: props.ariaLabel
+    aria-label: props.aria-label
   }))`
     width: min(100px, 100%);
     height: 48px;
@@ -306,7 +306,7 @@ function Card({id, title, subtitle, text, rewards, setRewards, modal, showModal,
                     <CardTitle modal={modal} notShow={disabled} onClick={modal && !disabled ? ()=>selectEdition(title) : null} >
                         {modal 
                             ?   <RadioButton disabled={disabled} selected={title === selectedEdition} >
-                                    <input type="radio" value={title} checked={selectedEdition === title} disabled={disabled} ariaLabel="Select Pledge"
+                                    <input type="radio" value={title} checked={selectedEdition === title} disabled={disabled} aria-label="Select Pledge"
                                         onChange={modal && !disabled ? (e)=>selectEdition(e.target.value) : null}/>
                                 </RadioButton>
                             : null
@@ -325,7 +325,7 @@ function Card({id, title, subtitle, text, rewards, setRewards, modal, showModal,
                                         <Text>Enter your pledge</Text>
                                         <div>
                                             <DolarSign>$</DolarSign>
-                                            <Input type="number" min={min} value={pledge | min} onChange={(e) => setPledge(Number(e.target.value))} ariaLabel="Pledge amount"/>
+                                            <Input type="number" min={min} value={pledge | min} onChange={(e) => setPledge(Number(e.target.value))} aria-label="Pledge amount"/>
                                             <Button disabled={pledge < min | pledge === 0} onClick={
                                                 pledge >= min 
                                                 ? () => {
