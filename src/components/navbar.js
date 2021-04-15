@@ -114,7 +114,7 @@ function NavBar(){
 
     return(
       <NavContainer>
-        <img src={LOGO} width={"128px"} height={"20px"} alt="crowdfund logo"/>
+        <img src={LOGO} width="128" height="20" alt="crowdfund logo"/>
         <Nav modalOpen={modalOpen} ref={node}>
           <li>About</li>
           <li>Discover</li>

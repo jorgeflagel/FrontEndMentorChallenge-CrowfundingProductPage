@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import devices from '../shared/breakpoints';
 
 
-const StatisticsContainer = styled.section`
+const StatisticsContainer = styled.div`
   display: flex;
   gap: 32px;
   background-color: #FFFFFF;

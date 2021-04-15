@@ -190,7 +190,7 @@ const RadioButton = styled.span`
         }
     }}
     ${(props) => {
-        if(!props.disabled) {
+        if(!props.notShow) {
             return(
                 css`
                     &:hover {
@@ -303,7 +303,7 @@ function Card({id, title, subtitle, text, rewards, setRewards, modal, showModal,
                 <CardHeader modal={modal}>
                     <CardTitle modal={modal} notShow={disabled} onClick={modal && !disabled ? ()=>selectEdition(title) : null} >
                         {modal 
-                            ?   <RadioButton disabled={disabled} selected={title === selectedEdition} >
+                            ?   <RadioButton notShow={disabled} selected={title === selectedEdition} >
                                     <input type="radio" value={title} checked={selectedEdition === title} disabled={disabled} aria-label="Select Pledge"
                                         onChange={modal && !disabled ? (e)=>selectEdition(e.target.value) : null}/>
                                 </RadioButton>
