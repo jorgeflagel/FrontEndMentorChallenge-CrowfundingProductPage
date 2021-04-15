@@ -258,8 +258,11 @@ const CardFooter = styled.div`
 const Bold = styled.span`
     color: rgba(0,0,0,1);
     font-weight: 700;
-    font-size: 18px;
+    font-size: 32px;
     line-height: 22px;
+`;
+const Bold2 = styled(Bold)`
+    font-size: 18px;
 `;
 
 const Input = styled.input`
@@ -312,7 +315,7 @@ function Card({id, title, subtitle, text, rewards, setRewards, modal, showModal,
                         {title}
                     </CardTitle>
                     {subtitle ? <CardSubtitle>{subtitle}</CardSubtitle> : null}
-                    {id !== 0 && modal ? <TextDesktop modal={modal}><Bold>{rewards[id]}</Bold> left</TextDesktop> : null}
+                    {id !== 0 && modal ? <TextDesktop modal={modal}><Bold2>{rewards[id]}</Bold2> left</TextDesktop> : null}
                 </CardHeader>
                 <Text modal={modal}>{text}</Text>
                 {modal 
@@ -323,14 +326,14 @@ function Card({id, title, subtitle, text, rewards, setRewards, modal, showModal,
                                         <Text>Enter your pledge</Text>
                                         <div>
                                             <DolarSign>$</DolarSign>
-                                            <Input type="number" min={min} value={pledge | min} onChange={(e) => setPledge(Number(e.target.value))} aria-label="Pledge amount"/>
+                                            <Input type="number" min={min} value={pledge} onChange={(e) => setPledge(Number(e.target.value))} aria-label="Pledge amount"/>
                                             <Button disabled={pledge < min | pledge === 0} onClick={
                                                 pledge >= min 
                                                 ? () => {
                                                     setTotal(total + pledge);
                                                     setBackers(backers + 1);
                                                     setRewards({...rewards, [id]:rewards[id] - 1});
-                                                    setPledge(null);
+                                                    setPledge(0);
                                                     setSuccess(true);
                                                     window.scroll({top: 100, left: 0, behavior: 'smooth'});
                                                 }
